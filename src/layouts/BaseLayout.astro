@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Absolute or root-relative URL. TODO: add a default OG image once one is designed. */
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Main">
+        <a href="/">Bruce — Web Development</a>
+        <ul>
+          <li><a href="/work/">Work</a></li>
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>© {new Date().getFullYear()} Bruce — Web Development Services · Winnipeg, Canada</p>
+    </footer>
+  </body>
+</html>
