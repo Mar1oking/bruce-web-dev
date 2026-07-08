@@ -141,7 +141,10 @@
       animation-timing-function: linear;
       animation-fill-mode: both;
       animation-timeline: view();
-      animation-range: entry 5% entry 55%;
+      /* End anchored at cover (mid-viewport), not entry: on tall screens the
+         frame is already partly in view at load, and an entry-anchored range
+         would be nearly finished before the first scroll. */
+      animation-range: entry 10% cover 45%;
     }
 
     /* Supporting content (tags, links): plain fade-up, lands after the frame */
