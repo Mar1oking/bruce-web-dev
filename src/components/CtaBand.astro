@@ -9,15 +9,18 @@ interface Props {
 const { heading, body, buttonLabel = 'Get in touch', href = '/contact/' } = Astro.props;
 ---
 
-<section class="bg-pine-800">
+<!-- The one fully-lit block on the page: dark type on the mint accent surface -->
+<section class="bg-pine-600">
   <div class="mx-auto w-full max-w-5xl px-5 py-24 sm:px-8 md:py-36">
-    <h2 class="max-w-[24ch] text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+    <h2
+      class="max-w-[20ch] text-4xl font-semibold tracking-tight text-paper sm:text-5xl md:text-6xl"
+    >
       {heading}
     </h2>
-    <p class="mt-4 max-w-prose text-lg leading-relaxed text-fog">{body}</p>
+    <p class="mt-5 max-w-prose text-lg leading-relaxed text-pine-800">{body}</p>
     <a
       href={href}
-      class="mt-8 inline-block rounded-md bg-paper px-5 py-2.5 font-medium text-pine-800 transition-colors hover:bg-white"
+      class="mt-10 inline-block rounded-md bg-paper px-6 py-3 font-medium text-ink transition-colors hover:bg-pine-950"
     >
       {buttonLabel}
     </a>

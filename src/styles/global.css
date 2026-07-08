@@ -3,34 +3,40 @@
 @import "tailwindcss";
 
 /*
- * Site theme — edit these tokens to retheme the whole site.
- * Every color pairing used on the site passes WCAG AA (≥ 4.5:1).
+ * Site theme — "Night Pine" (dark). Edit these tokens to retheme the whole site.
+ * Token names kept from the light theme: `paper` is the page ground, `ink` is
+ * the high-emphasis text color — on this theme the ground is dark and ink is
+ * light. Every text/background pairing used on the site passes WCAG AA (≥ 4.5:1).
  */
 @theme {
   --font-sans: "Public Sans Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bricolage Grotesque Variable", "Public Sans Variable",
     ui-sans-serif, system-ui, sans-serif;
 
-  /* Warm neutrals */
-  --color-paper: #fcfbf9; /* page background */
-  --color-band: #f4f2ee; /* alternate section background */
-  --color-edge: #e5e2dc; /* borders and rules */
-  --color-ink: #1f1b18; /* headings, dark footer background */
-  --color-body: #423c36; /* body text */
-  --color-muted: #6e665e; /* secondary text */
-  --color-fog: #d9d4cd; /* body text on ink backgrounds */
+  /* Ground and surfaces (deep pine-ink, warm-tinted) */
+  --color-paper: #142420; /* page ground */
+  --color-band: #1c312b; /* raised surface — featured wall, form fields, code */
+  --color-edge: #2f463e; /* hairline rules and borders */
+  --color-pine-950: #0e1a16; /* darkest — footer, inverse button hover */
 
-  /* Accent — deep pine green, used sparingly */
-  --color-pine-50: #edf5f2;
-  --color-pine-300: #8fd6c4;
-  --color-pine-600: #17685a;
-  --color-pine-700: #115548;
-  --color-pine-800: #0d4237;
+  /* Text */
+  --color-ink: #f1eee7; /* headings, high emphasis (porcelain) */
+  --color-body: #d5d0c5; /* body text */
+  --color-muted: #9aa69e; /* secondary text */
+  --color-fog: #a7b0a8; /* text on the darkest (pine-950) surfaces */
+
+  /* Accents — mint carries interaction, sand carries editorial marks */
+  --color-pine-50: #182b26; /* lifted green tint surface */
+  --color-pine-300: #4e7a6e; /* dim mint — underline decoration, resting borders */
+  --color-pine-600: #7fd1bc; /* primary accent — links, numerals, CTA surface */
+  --color-pine-700: #9adecb; /* hover state (brighter = "up" on dark) */
+  --color-pine-800: #0d4237; /* deep pine — dark text on mint surfaces */
+  --color-sand: #d9c29a; /* secondary accent — ticks, small marks */
 }
 
 @layer base {
   html {
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   body {
@@ -46,7 +52,7 @@
   }
 
   ::selection {
-    @apply bg-pine-300/40;
+    @apply bg-pine-600/25;
   }
 
   :focus-visible {
@@ -66,14 +72,14 @@
     white-space: nowrap;
   }
   .skip-link:focus-visible {
-    @apply top-4 left-4 z-50 rounded-md bg-pine-600 px-4 py-2 font-medium text-white;
+    @apply top-4 left-4 z-50 rounded-md bg-pine-600 px-4 py-2 font-medium text-paper;
     width: auto;
     height: auto;
     clip-path: none;
   }
 
   .btn-primary {
-    @apply inline-block rounded-md bg-pine-600 px-5 py-2.5 font-medium text-white transition-colors hover:bg-pine-700;
+    @apply inline-block rounded-md bg-pine-600 px-5 py-2.5 font-medium text-paper transition-colors hover:bg-pine-700;
   }
 
   .text-link {
@@ -83,6 +89,11 @@
   /* Small uppercase labels: tags, metadata headings */
   .meta-label {
     @apply text-xs font-medium tracking-widest text-muted uppercase;
+  }
+
+  /* Recurring brand mark: small sand tick above section headings and labels */
+  .tick {
+    @apply mb-4 h-[3px] w-5 bg-sand;
   }
 
   /* Rendered markdown body of a case study */

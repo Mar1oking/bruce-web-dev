@@ -38,14 +38,16 @@ const steps = [
   title="Bruce — Web Development for Small Businesses"
   description="Fast, affordable websites for small businesses, built by a student developer in Winnipeg. See my work and get in touch for a quote."
 >
+  <!-- Focal #2: the hero. Weight through emptiness — one colored phrase, nothing else. -->
   <section
     class="mx-auto w-full max-w-5xl px-5 pt-24 pb-20 text-center sm:px-8 md:pt-40 md:pb-32"
   >
-    <div aria-hidden="true" class="mx-auto mb-8 h-1 w-12 bg-pine-600"></div>
+    <div aria-hidden="true" class="mx-auto mb-8 h-1 w-12 bg-sand"></div>
     <h1
       class="mx-auto max-w-[22ch] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl"
     >
-      Websites that win your small business more customers
+      Websites that win your small business
+      <span class="text-pine-600">more customers</span>
     </h1>
     <p class="mx-auto mt-6 max-w-prose text-lg leading-relaxed">
       I'm Bruce, a student web developer in Winnipeg. I build fast, modern
@@ -55,10 +57,16 @@ const steps = [
     <a href="/contact/" class="btn-primary mt-10">Get in touch</a>
   </section>
 
+  <!--
+    Focal #1 + signature: the live-site frame. The header sits on the ground,
+    then the browser frame is pulled up across the seam into the raised band —
+    the page's one grid break.
+  -->
   {
     featured && (
-      <section class="border-y border-edge bg-band">
-        <div class="mx-auto w-full max-w-5xl px-5 py-20 text-center sm:px-8 md:py-32">
+      <>
+        <section class="mx-auto w-full max-w-5xl px-5 pt-16 pb-28 text-center sm:px-8 md:pt-24 md:pb-40">
+          <div class="tick mx-auto" aria-hidden="true" />
           <p class="meta-label">Featured work</p>
           <h2 class="mx-auto mt-4 max-w-[20ch] text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
             <a
@@ -71,42 +79,59 @@ const steps = [
           <p class="mx-auto mt-4 max-w-prose text-lg leading-relaxed">
             {featured.data.summary}
           </p>
-          <a href={`/work/${featured.id}/`} class="group mt-10 block md:mt-12">
-            <Image
-              src={featured.data.cover}
-              alt={`${featured.data.title} — cover image`}
-              width={1600}
-              class="aspect-[16/9] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
-            />
-          </a>
-          <ul
-            aria-label="Technologies used"
-            class="mt-8 flex flex-wrap justify-center gap-x-3 gap-y-1"
-          >
-            {featured.data.tags.map((tag) => (
-              <li class="meta-label">{tag}</li>
-            ))}
-          </ul>
-          <p class="mt-6">
-            <a href={`/work/${featured.id}/`} class="text-link">
-              Read the case study
+        </section>
+        <section class="border-t border-edge bg-band">
+          <div class="mx-auto w-full max-w-5xl px-5 pb-20 text-center sm:px-8 md:pb-32">
+            <a href={`/work/${featured.id}/`} class="group -mt-20 block md:-mt-28">
+              <span class="block overflow-hidden rounded-xl border border-ink/20 bg-paper shadow-2xl shadow-black/50 transition-colors group-hover:border-pine-300">
+                <span class="flex items-center gap-2 border-b border-edge bg-pine-950 px-4 py-3">
+                  <span class="size-2.5 rounded-full bg-muted/50" />
+                  <span class="size-2.5 rounded-full bg-muted/50" />
+                  <span class="size-2.5 rounded-full bg-muted/50" />
+                  <span class="mx-auto block h-5 w-2/5 rounded-full bg-ink/5" />
+                  <span class="w-[3.75rem]" />
+                </span>
+                <Image
+                  src={featured.data.cover}
+                  alt={`${featured.data.title} — the live site in a browser`}
+                  width={1600}
+                  class="aspect-[16/9] w-full object-cover object-top"
+                />
+              </span>
             </a>
-            <span aria-hidden="true" class="mx-3 text-muted">
-              ·
-            </span>
-            <a href="/work/" class="text-link">
-              All work
-            </a>
-          </p>
-        </div>
-      </section>
+            <ul
+              aria-label="Technologies used"
+              class="mt-10 flex flex-wrap justify-center gap-x-3 gap-y-1"
+            >
+              {featured.data.tags.map((tag) => (
+                <li class="meta-label">{tag}</li>
+              ))}
+            </ul>
+            <p class="mt-6">
+              <a href={`/work/${featured.id}/`} class="text-link">
+                Read the case study
+              </a>
+              <span aria-hidden="true" class="mx-3 text-muted">
+                ·
+              </span>
+              <a href="/work/" class="text-link">
+                All work
+              </a>
+            </p>
+          </div>
+        </section>
+      </>
     )
   }
 
+  <!-- Quiet zone: two compact sections on continuous ground, hairline rules only -->
   <section
-    class="mx-auto grid w-full max-w-5xl gap-x-16 gap-y-10 px-5 py-20 sm:px-8 md:grid-cols-[1fr_1.6fr] md:py-32"
+    class="mx-auto grid w-full max-w-5xl gap-x-16 gap-y-8 px-5 py-16 sm:px-8 md:grid-cols-[1fr_1.6fr] md:py-24"
   >
-    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">What you get</h2>
+    <div>
+      <div class="tick" aria-hidden="true"></div>
+      <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">What you get</h2>
+    </div>
     <ul class="space-y-5 text-lg">
       {
         benefits.map((benefit) => (
@@ -132,13 +157,16 @@ const steps = [
     </ul>
   </section>
 
-  <section class="border-y border-edge bg-band">
-    <div class="mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 md:py-32">
+  <section class="border-t border-edge">
+    <div class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-24">
       <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
-        <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">How I can help</h2>
+        <div>
+          <div class="tick" aria-hidden="true"></div>
+          <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">How I can help</h2>
+        </div>
         <a href="/services/" class="text-link">Services &amp; pricing</a>
       </div>
-      <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-3">
+      <div class="mt-10 grid gap-x-12 gap-y-10 md:grid-cols-3">
         <a
           href="/services/"
           class="group block border-t border-edge pt-6 transition-colors hover:border-pine-300"
@@ -185,24 +213,28 @@ const steps = [
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 md:py-32">
-    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
-    <p class="mt-4 max-w-prose leading-relaxed">
-      No mystery — this is what working with me looks like, start to finish.
-    </p>
-    <ol role="list" class="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-4">
-      {
-        steps.map((step, i) => (
-          <li>
-            <p aria-hidden="true" class="font-display text-4xl font-semibold text-pine-600">
-              {String(i + 1).padStart(2, '0')}
-            </p>
-            <h3 class="mt-4 text-xl font-semibold tracking-tight">{step.title}</h3>
-            <p class="mt-2 leading-relaxed">{step.body}</p>
-          </li>
-        ))
-      }
-    </ol>
+  <!-- Mid-weight: the process, on the first lifted pine tint -->
+  <section class="border-y border-edge bg-pine-50">
+    <div class="mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 md:py-32">
+      <div class="tick" aria-hidden="true"></div>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
+      <p class="mt-4 max-w-prose leading-relaxed">
+        No mystery — this is what working with me looks like, start to finish.
+      </p>
+      <ol role="list" class="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-4">
+        {
+          steps.map((step, i) => (
+            <li>
+              <p aria-hidden="true" class="font-display text-4xl font-semibold text-pine-600">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 class="mt-4 text-xl font-semibold tracking-tight">{step.title}</h3>
+              <p class="mt-2 leading-relaxed">{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
   </section>
 
   <CtaBand

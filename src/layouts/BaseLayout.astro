@@ -73,10 +73,13 @@ const isActive = (href: string) =>
     <main id="main" class="flex-1">
       <slot />
     </main>
-    <footer class="bg-ink">
-      <p class="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-fog sm:px-8">
-        © {new Date().getFullYear()} Bruce — Web Development Services · Winnipeg, Canada
-      </p>
+    <footer class="bg-pine-950">
+      <div class="mx-auto w-full max-w-5xl px-5 py-10 sm:px-8">
+        <div class="tick" aria-hidden="true"></div>
+        <p class="text-sm text-fog">
+          © {new Date().getFullYear()} Bruce — Web Development Services · Winnipeg, Canada
+        </p>
+      </div>
     </footer>
   </body>
 </html>
