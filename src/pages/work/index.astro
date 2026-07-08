@@ -2,10 +2,15 @@
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
 
 const projects = (await getCollection('work')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+const [lead, ...rest] = projects;
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long' });
 ---
 
 <BaseLayout
@@ -14,38 +19,89 @@ const projects = (await getCollection('work')).sort(
 >
   <div class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-20">
     <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Work</h1>
+    <p class="mt-4 max-w-prose text-lg leading-relaxed">
+      Real projects for real businesses. Each case study covers the problem,
+      what I built, and what it changed.
+    </p>
     {
       projects.length === 0 ? (
         <p class="mt-10 max-w-prose rounded-lg border border-edge bg-band p-6 leading-relaxed sm:p-8">
           Case studies are coming soon. In the meantime, <a href="/contact/" class="text-link">get in touch</a> and I'll walk you through what I'm working on.
         </p>
       ) : (
-        <ul class="mt-12 space-y-16">
-          {projects.map((project) => (
-            <li class="max-w-3xl">
-              <article>
-                <a href={`/work/${project.id}/`} class="group block">
-                  <Image
-                    src={project.data.cover}
-                    alt={`${project.data.title} — cover image`}
-                    width={800}
-                    class="aspect-[16/10] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
-                  />
-                  <h2 class="mt-5 text-2xl font-semibold tracking-tight transition-colors group-hover:text-pine-700">
-                    {project.data.title}
-                  </h2>
-                </a>
-                <p class="mt-2 max-w-prose leading-relaxed">{project.data.summary}</p>
-                <ul aria-label="Technologies used" class="mt-4 flex flex-wrap gap-x-3 gap-y-1">
-                  {project.data.tags.map((tag) => (
-                    <li class="meta-label">{tag}</li>
-                  ))}
-                </ul>
-              </article>
-            </li>
-          ))}
-        </ul>
+        <>
+          <article class="mt-12">
+            <a href={`/work/${lead.id}/`} class="group block">
+              <Image
+                src={lead.data.cover}
+                alt={`${lead.data.title} — cover image`}
+                width={1200}
+                class="aspect-[16/10] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
+              />
+            </a>
+            <p class="meta-label mt-6">
+              {lead.data.client} ·{' '}
+              <time datetime={lead.data.date.toISOString()}>{formatDate(lead.data.date)}</time>
+            </p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+              <a
+                href={`/work/${lead.id}/`}
+                class="transition-colors hover:text-pine-700"
+              >
+                {lead.data.title}
+              </a>
+            </h2>
+            <p class="mt-3 max-w-prose text-lg leading-relaxed">{lead.data.summary}</p>
+            <ul aria-label="Technologies used" class="mt-4 flex flex-wrap gap-x-3 gap-y-1">
+              {lead.data.tags.map((tag) => (
+                <li class="meta-label">{tag}</li>
+              ))}
+            </ul>
+            <a href={`/work/${lead.id}/`} class="text-link mt-6 inline-block">
+              Read the case study
+            </a>
+          </article>
+
+          {rest.length > 0 && (
+            <ul class="mt-16 grid gap-x-8 gap-y-12 border-t border-edge pt-12 sm:grid-cols-2">
+              {rest.map((project) => (
+                <li>
+                  <article>
+                    <a href={`/work/${project.id}/`} class="group block">
+                      <Image
+                        src={project.data.cover}
+                        alt={`${project.data.title} — cover image`}
+                        width={800}
+                        class="aspect-[16/10] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
+                      />
+                      <h2 class="mt-4 text-xl font-semibold tracking-tight transition-colors group-hover:text-pine-700">
+                        {project.data.title}
+                      </h2>
+                    </a>
+                    <p class="meta-label mt-2">
+                      {project.data.client} ·{' '}
+                      <time datetime={project.data.date.toISOString()}>
+                        {formatDate(project.data.date)}
+                      </time>
+                    </p>
+                    <p class="mt-3 leading-relaxed">{project.data.summary}</p>
+                    <ul aria-label="Technologies used" class="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+                      {project.data.tags.map((tag) => (
+                        <li class="meta-label">{tag}</li>
+                      ))}
+                    </ul>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
       )
     }
   </div>
+
+  <CtaBand
+    heading="Want your business here next?"
+    body="Every project on this page started with a short conversation. Tell me what you need and I'll give you an honest quote."
+  />
 </BaseLayout>
