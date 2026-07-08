@@ -2,23 +2,28 @@
 title: Pan de Cretos
 client: Pan de Cretos
 summary: >-
-  A fast, mobile-first website for a Filipino bakery — menu, hours, and
-  location in one obvious place, quick to load on any phone.
+  A mobile-first website for a Filipino bakery with three Winnipeg
+  locations — the full menu, a store finder with directions, and reviews
+  in one place.
 problem: >-
-  Pan de Cretos didn't have a website of its own, so basics like what the
-  bakery sells, when it's open, and where to find it were scattered across
-  social media posts. New customers had no single, reliable place to look.
+  Pan de Cretos bakes at three locations across Winnipeg, each with its own
+  address and phone number — but there was no single place online that
+  pulled it all together. Customers had to dig through social media posts
+  to find the menu or figure out which store was closest.
 solution: >-
-  I designed and built a lightweight static site with Astro and Tailwind
-  CSS. It leads with the bakery's breads and pastries, puts the menu, hours,
-  and location front and centre, and keeps every page small so it loads
-  quickly even on a slow phone connection.
+  I designed and built a mobile-first site with Astro and Tailwind CSS
+  around what customers actually look up: a menu showcase from hot pandesal
+  to buko pie, a store finder with one-tap directions and call buttons for
+  each location, customer reviews, and links to order through delivery
+  apps. A site-wide banner promotes the all-day hot pandesal — the thing
+  regulars come in for.
 result: >-
-  The bakery now has a site it fully owns — one link to share that answers
-  the questions customers actually ask. I'm a student developer and this is
-  early days, so I don't have traffic numbers to point to yet; what I can
-  say honestly is that the site is fast, works on any screen size, and is
-  simple enough for the owners to keep the menu current.
+  Pan de Cretos now has one link that answers the questions every new
+  customer asks: what's in the case, where's the nearest store, and how to
+  reach it. I don't have traffic or sales numbers to share — what I can
+  point to is a site that loads fast, works well on the phones most people
+  use to find a bakery, and puts directions to all three stores one tap
+  away.
 tags:
   - Astro
   - Tailwind
@@ -27,3 +32,13 @@ images: []
 date: 2026-07-08
 featured: true
 ---
+
+## What's on the site
+
+- A menu showcase — breads, bicho, ensaymada, buko and egg pies, hot meal
+  combos, and the Filipino grocery corner
+- A store finder for all three locations (Munroe Ave, Isabel St, and
+  St Anne's Rd) with one-tap directions and call buttons for each
+- Customer reviews, an announcement banner for the all-day hot pandesal,
+  and a sign-up form for new breads and promos
+- Ordering links for the delivery apps the bakery is already on
