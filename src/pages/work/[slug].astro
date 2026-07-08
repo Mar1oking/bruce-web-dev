@@ -25,7 +25,7 @@ const formattedDate = project.data.date.toLocaleDateString('en-CA', {
   title={`${project.data.title} — Bruce Web Development`}
   description={project.data.summary}
 >
-  <article class="mx-auto w-full max-w-3xl px-5 pt-16 sm:px-8 md:pt-20">
+  <article class="mx-auto w-full max-w-3xl px-5 pt-20 sm:px-8 md:pt-28">
     <header>
       <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
         {project.data.title}
@@ -54,25 +54,25 @@ const formattedDate = project.data.date.toLocaleDateString('en-CA', {
       />
     </header>
 
-    <section class="mt-12">
-      <h2 class="text-2xl font-semibold tracking-tight">The problem</h2>
+    <section class="mt-16">
+      <h2 class="text-3xl font-semibold tracking-tight">The problem</h2>
       <p class="mt-4 max-w-prose leading-relaxed">{project.data.problem}</p>
     </section>
 
-    <section class="mt-12">
-      <h2 class="text-2xl font-semibold tracking-tight">What I did</h2>
+    <section class="mt-16">
+      <h2 class="text-3xl font-semibold tracking-tight">What I did</h2>
       <p class="mt-4 max-w-prose leading-relaxed">{project.data.solution}</p>
     </section>
 
-    <section class="mt-12">
-      <h2 class="text-2xl font-semibold tracking-tight">The result</h2>
+    <section class="mt-16">
+      <h2 class="text-3xl font-semibold tracking-tight">The result</h2>
       <p class="mt-4 max-w-prose leading-relaxed">{project.data.result}</p>
     </section>
 
     {
       project.data.images.length > 0 && (
-        <section class="mt-12">
-          <h2 class="text-2xl font-semibold tracking-tight">Screenshots</h2>
+        <section class="mt-16">
+          <h2 class="text-3xl font-semibold tracking-tight">Screenshots</h2>
           <ul class="mt-6 grid gap-6 sm:grid-cols-2">
             {project.data.images.map((img, i) => (
               <li>
@@ -89,12 +89,12 @@ const formattedDate = project.data.date.toLocaleDateString('en-CA', {
       )
     }
 
-    <div class="md-content mt-12">
+    <div class="md-content mt-16">
       <Content />
     </div>
   </article>
 
-  <p class="mx-auto w-full max-w-3xl px-5 pt-12 pb-16 sm:px-8">
+  <p class="mx-auto w-full max-w-3xl px-5 pt-12 pb-20 sm:px-8">
     <a href="/work/" class="text-link">← All work</a>
   </p>
 

@@ -38,12 +38,16 @@ const steps = [
   title="Bruce — Web Development for Small Businesses"
   description="Fast, affordable websites for small businesses, built by a student developer in Winnipeg. See my work and get in touch for a quote."
 >
-  <section class="mx-auto w-full max-w-5xl px-5 pt-20 pb-16 sm:px-8 md:pt-28 md:pb-24">
-    <div aria-hidden="true" class="mb-8 h-1 w-12 bg-pine-600"></div>
-    <h1 class="max-w-[22ch] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+  <section
+    class="mx-auto w-full max-w-5xl px-5 pt-24 pb-20 text-center sm:px-8 md:pt-40 md:pb-32"
+  >
+    <div aria-hidden="true" class="mx-auto mb-8 h-1 w-12 bg-pine-600"></div>
+    <h1
+      class="mx-auto max-w-[22ch] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl"
+    >
       Websites that win your small business more customers
     </h1>
-    <p class="mt-6 max-w-prose text-lg leading-relaxed">
+    <p class="mx-auto mt-6 max-w-prose text-lg leading-relaxed">
       I'm Bruce, a student web developer in Winnipeg. I build fast, modern
       websites for small businesses — clear pricing, honest advice, and a
       site you can actually update yourself.
@@ -54,55 +58,61 @@ const steps = [
   {
     featured && (
       <section class="border-y border-edge bg-band">
-        <div class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-20">
-          <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
-            <p class="meta-label">Featured work</p>
-            <a href="/work/" class="text-link">All work</a>
-          </div>
-          <div class="mt-8 grid items-center gap-10 md:grid-cols-[3fr_2fr] md:gap-16">
-            <a href={`/work/${featured.id}/`} class="group block">
-              <Image
-                src={featured.data.cover}
-                alt={`${featured.data.title} — cover image`}
-                width={1000}
-                class="aspect-[16/10] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
-              />
+        <div class="mx-auto w-full max-w-5xl px-5 py-20 text-center sm:px-8 md:py-32">
+          <p class="meta-label">Featured work</p>
+          <h2 class="mx-auto mt-4 max-w-[20ch] text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+            <a
+              href={`/work/${featured.id}/`}
+              class="transition-colors hover:text-pine-700"
+            >
+              {featured.data.title}
             </a>
-            <div>
-              <h2 class="text-3xl font-semibold tracking-tight">
-                <a
-                  href={`/work/${featured.id}/`}
-                  class="transition-colors hover:text-pine-700"
-                >
-                  {featured.data.title}
-                </a>
-              </h2>
-              <p class="mt-3 leading-relaxed">{featured.data.summary}</p>
-              <ul aria-label="Technologies used" class="mt-5 flex flex-wrap gap-x-3 gap-y-1">
-                {featured.data.tags.map((tag) => (
-                  <li class="meta-label">{tag}</li>
-                ))}
-              </ul>
-              <a href={`/work/${featured.id}/`} class="text-link mt-6 inline-block">
-                Read the case study
-              </a>
-            </div>
-          </div>
+          </h2>
+          <p class="mx-auto mt-4 max-w-prose text-lg leading-relaxed">
+            {featured.data.summary}
+          </p>
+          <a href={`/work/${featured.id}/`} class="group mt-10 block md:mt-12">
+            <Image
+              src={featured.data.cover}
+              alt={`${featured.data.title} — cover image`}
+              width={1600}
+              class="aspect-[16/9] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
+            />
+          </a>
+          <ul
+            aria-label="Technologies used"
+            class="mt-8 flex flex-wrap justify-center gap-x-3 gap-y-1"
+          >
+            {featured.data.tags.map((tag) => (
+              <li class="meta-label">{tag}</li>
+            ))}
+          </ul>
+          <p class="mt-6">
+            <a href={`/work/${featured.id}/`} class="text-link">
+              Read the case study
+            </a>
+            <span aria-hidden="true" class="mx-3 text-muted">
+              ·
+            </span>
+            <a href="/work/" class="text-link">
+              All work
+            </a>
+          </p>
         </div>
       </section>
     )
   }
 
   <section
-    class="mx-auto grid w-full max-w-5xl gap-x-16 gap-y-8 px-5 py-16 sm:px-8 md:grid-cols-[1fr_1.6fr] md:py-20"
+    class="mx-auto grid w-full max-w-5xl gap-x-16 gap-y-10 px-5 py-20 sm:px-8 md:grid-cols-[1fr_1.6fr] md:py-32"
   >
-    <h2 class="text-2xl font-semibold tracking-tight">What you get</h2>
-    <ul class="space-y-4">
+    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">What you get</h2>
+    <ul class="space-y-5 text-lg">
       {
         benefits.map((benefit) => (
           <li class="flex gap-3">
             <svg
-              class="mt-1.5 size-4 shrink-0 text-pine-600"
+              class="mt-2 size-4 shrink-0 text-pine-600"
               viewBox="0 0 16 16"
               fill="none"
               aria-hidden="true"
@@ -123,50 +133,50 @@ const steps = [
   </section>
 
   <section class="border-y border-edge bg-band">
-    <div class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-20">
+    <div class="mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 md:py-32">
       <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
-        <h2 class="text-2xl font-semibold tracking-tight">How I can help</h2>
+        <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">How I can help</h2>
         <a href="/services/" class="text-link">Services &amp; pricing</a>
       </div>
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <div class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-3">
         <a
           href="/services/"
-          class="group flex flex-col rounded-lg border border-edge bg-white p-6 transition-colors hover:border-pine-300"
+          class="group block border-t border-edge pt-6 transition-colors hover:border-pine-300"
         >
           <h3
-            class="text-lg font-semibold tracking-tight transition-colors group-hover:text-pine-700"
+            class="text-xl font-semibold tracking-tight transition-colors group-hover:text-pine-700"
           >
             New business website
           </h3>
-          <p class="mt-2 leading-relaxed">
+          <p class="mt-3 leading-relaxed">
             A fast, mobile-friendly site that tells customers what you do and
             how to reach you.
           </p>
         </a>
         <a
           href="/services/"
-          class="group flex flex-col rounded-lg border border-edge bg-white p-6 transition-colors hover:border-pine-300"
+          class="group block border-t border-edge pt-6 transition-colors hover:border-pine-300"
         >
           <h3
-            class="text-lg font-semibold tracking-tight transition-colors group-hover:text-pine-700"
+            class="text-xl font-semibold tracking-tight transition-colors group-hover:text-pine-700"
           >
             Website redesign
           </h3>
-          <p class="mt-2 leading-relaxed">
+          <p class="mt-3 leading-relaxed">
             A modern rebuild for a site that looks dated or loads slowly —
             keeping what already works.
           </p>
         </a>
         <a
           href="/services/"
-          class="group flex flex-col rounded-lg border border-edge bg-white p-6 transition-colors hover:border-pine-300"
+          class="group block border-t border-edge pt-6 transition-colors hover:border-pine-300"
         >
           <h3
-            class="text-lg font-semibold tracking-tight transition-colors group-hover:text-pine-700"
+            class="text-xl font-semibold tracking-tight transition-colors group-hover:text-pine-700"
           >
             Updates &amp; maintenance
           </h3>
-          <p class="mt-2 leading-relaxed">
+          <p class="mt-3 leading-relaxed">
             Content changes and new pages, so your site stays current without
             you touching code.
           </p>
@@ -175,19 +185,19 @@ const steps = [
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-20">
-    <h2 class="text-2xl font-semibold tracking-tight">How it works</h2>
-    <p class="mt-3 max-w-prose leading-relaxed">
+  <section class="mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 md:py-32">
+    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
+    <p class="mt-4 max-w-prose leading-relaxed">
       No mystery — this is what working with me looks like, start to finish.
     </p>
-    <ol role="list" class="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
+    <ol role="list" class="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-4">
       {
         steps.map((step, i) => (
-          <li class="border-t border-edge pt-5">
-            <p aria-hidden="true" class="font-display text-3xl font-semibold text-pine-600">
+          <li>
+            <p aria-hidden="true" class="font-display text-4xl font-semibold text-pine-600">
               {String(i + 1).padStart(2, '0')}
             </p>
-            <h3 class="mt-3 text-lg font-semibold tracking-tight">{step.title}</h3>
+            <h3 class="mt-4 text-xl font-semibold tracking-tight">{step.title}</h3>
             <p class="mt-2 leading-relaxed">{step.body}</p>
           </li>
         ))

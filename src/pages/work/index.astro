@@ -17,8 +17,8 @@ const formatDate = (date: Date) =>
   title="Work — Bruce Web Development"
   description="Case studies of websites I've built for small businesses: the problem, what I did, and the result."
 >
-  <div class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-20">
-    <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Work</h1>
+  <div class="mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 md:py-32">
+    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Work</h1>
     <p class="mt-4 max-w-prose text-lg leading-relaxed">
       Real projects for real businesses. Each case study covers the problem,
       what I built, and what it changed.
@@ -43,7 +43,7 @@ const formatDate = (date: Date) =>
               {lead.data.client} ·{' '}
               <time datetime={lead.data.date.toISOString()}>{formatDate(lead.data.date)}</time>
             </p>
-            <h2 class="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
               <a
                 href={`/work/${lead.id}/`}
                 class="transition-colors hover:text-pine-700"
@@ -74,7 +74,7 @@ const formatDate = (date: Date) =>
                         width={800}
                         class="aspect-[16/10] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
                       />
-                      <h2 class="mt-4 text-xl font-semibold tracking-tight transition-colors group-hover:text-pine-700">
+                      <h2 class="mt-4 text-2xl font-semibold tracking-tight transition-colors group-hover:text-pine-700">
                         {project.data.title}
                       </h2>
                     </a>
