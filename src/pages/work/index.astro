@@ -12,29 +12,40 @@ const projects = (await getCollection('work')).sort(
   title="Work — Bruce Web Development"
   description="Case studies of websites I've built for small businesses: the problem, what I did, and the result."
 >
-  <h1>Work</h1>
-  {
-    projects.length === 0 ? (
-      <p>Case studies are coming soon. In the meantime, <a href="/contact/">get in touch</a> and I'll walk you through what I'm working on.</p>
-    ) : (
-      <ul>
-        {projects.map((project) => (
-          <li>
-            <article>
-              <a href={`/work/${project.id}/`}>
-                <Image src={project.data.cover} alt={`${project.data.title} — cover image`} width={800} />
-                <h2>{project.data.title}</h2>
-              </a>
-              <p>{project.data.summary}</p>
-              <ul aria-label="Technologies used">
-                {project.data.tags.map((tag) => (
-                  <li>{tag}</li>
-                ))}
-              </ul>
-            </article>
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  <div class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-20">
+    <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Work</h1>
+    {
+      projects.length === 0 ? (
+        <p class="mt-10 max-w-prose rounded-lg border border-edge bg-band p-6 leading-relaxed sm:p-8">
+          Case studies are coming soon. In the meantime, <a href="/contact/" class="text-link">get in touch</a> and I'll walk you through what I'm working on.
+        </p>
+      ) : (
+        <ul class="mt-12 space-y-16">
+          {projects.map((project) => (
+            <li class="max-w-3xl">
+              <article>
+                <a href={`/work/${project.id}/`} class="group block">
+                  <Image
+                    src={project.data.cover}
+                    alt={`${project.data.title} — cover image`}
+                    width={800}
+                    class="aspect-[16/10] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
+                  />
+                  <h2 class="mt-5 text-2xl font-semibold tracking-tight transition-colors group-hover:text-pine-700">
+                    {project.data.title}
+                  </h2>
+                </a>
+                <p class="mt-2 max-w-prose leading-relaxed">{project.data.summary}</p>
+                <ul aria-label="Technologies used" class="mt-4 flex flex-wrap gap-x-3 gap-y-1">
+                  {project.data.tags.map((tag) => (
+                    <li class="meta-label">{tag}</li>
+                  ))}
+                </ul>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
 </BaseLayout>

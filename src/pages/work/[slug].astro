@@ -24,45 +24,63 @@ const formattedDate = project.data.date.toLocaleDateString('en-CA', {
   title={`${project.data.title} — Bruce Web Development`}
   description={project.data.summary}
 >
-  <article>
+  <article class="mx-auto w-full max-w-3xl px-5 pt-16 sm:px-8 md:pt-20">
     <header>
-      <h1>{project.data.title}</h1>
-      <p>{project.data.summary}</p>
-      <dl>
-        <dt>Client</dt>
-        <dd>{project.data.client}</dd>
-        <dt>Date</dt>
-        <dd><time datetime={project.data.date.toISOString()}>{formattedDate}</time></dd>
+      <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+        {project.data.title}
+      </h1>
+      <p class="mt-4 max-w-prose text-lg leading-relaxed text-muted">{project.data.summary}</p>
+      <dl class="mt-8 flex flex-wrap gap-x-10 gap-y-4">
+        <div>
+          <dt class="meta-label">Client</dt>
+          <dd class="mt-1 font-medium text-ink">{project.data.client}</dd>
+        </div>
+        <div>
+          <dt class="meta-label">Date</dt>
+          <dd class="mt-1 font-medium text-ink">
+            <time datetime={project.data.date.toISOString()}>{formattedDate}</time>
+          </dd>
+        </div>
       </dl>
-      <ul aria-label="Technologies used">
-        {project.data.tags.map((tag) => <li>{tag}</li>)}
+      <ul aria-label="Technologies used" class="mt-6 flex flex-wrap gap-x-3 gap-y-1">
+        {project.data.tags.map((tag) => <li class="meta-label">{tag}</li>)}
       </ul>
-      <Image src={project.data.cover} alt={`${project.data.title} — cover image`} width={1200} />
+      <Image
+        src={project.data.cover}
+        alt={`${project.data.title} — cover image`}
+        width={1200}
+        class="mt-10 w-full rounded-lg border border-edge"
+      />
     </header>
 
-    <section>
-      <h2>The problem</h2>
-      <p>{project.data.problem}</p>
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight">The problem</h2>
+      <p class="mt-4 max-w-prose leading-relaxed">{project.data.problem}</p>
     </section>
 
-    <section>
-      <h2>What I did</h2>
-      <p>{project.data.solution}</p>
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight">What I did</h2>
+      <p class="mt-4 max-w-prose leading-relaxed">{project.data.solution}</p>
     </section>
 
-    <section>
-      <h2>The result</h2>
-      <p>{project.data.result}</p>
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight">The result</h2>
+      <p class="mt-4 max-w-prose leading-relaxed">{project.data.result}</p>
     </section>
 
     {
       project.data.images.length > 0 && (
-        <section>
-          <h2>Screenshots</h2>
-          <ul>
+        <section class="mt-12">
+          <h2 class="text-2xl font-semibold tracking-tight">Screenshots</h2>
+          <ul class="mt-6 grid gap-6 sm:grid-cols-2">
             {project.data.images.map((img, i) => (
               <li>
-                <Image src={img} alt={`${project.data.title} — screenshot ${i + 1}`} width={1200} />
+                <Image
+                  src={img}
+                  alt={`${project.data.title} — screenshot ${i + 1}`}
+                  width={1200}
+                  class="w-full rounded-lg border border-edge"
+                />
               </li>
             ))}
           </ul>
@@ -70,8 +88,12 @@ const formattedDate = project.data.date.toLocaleDateString('en-CA', {
       )
     }
 
-    <Content />
+    <div class="md-content mt-12">
+      <Content />
+    </div>
   </article>
 
-  <p><a href="/work/">← All work</a></p>
+  <p class="mx-auto w-full max-w-3xl px-5 pt-12 pb-16 sm:px-8">
+    <a href="/work/" class="text-link">← All work</a>
+  </p>
 </BaseLayout>

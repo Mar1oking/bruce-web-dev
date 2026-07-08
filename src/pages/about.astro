@@ -6,17 +6,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="About — Bruce Web Development"
   description="About Bruce: a student web developer in Winnipeg building fast, modern websites for small businesses."
 >
-  <h1>About me</h1>
-  <p>
-    I'm Bruce, a student developer based in Winnipeg. I build websites for
-    small businesses using modern tools that make sites fast, secure, and
-    cheap to run.
-  </p>
-  <p>
-    Being a student means two things for you: my rates are lower than an
-    agency's, and I care a lot about doing good work — every project goes
-    in my portfolio. I'll always be straight with you about what I can do
-    and how long it will take.
-  </p>
-  <p><a href="/contact/">Let's talk about your project</a></p>
+  <div class="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 md:py-20">
+    <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">About me</h1>
+    <p class="mt-6 max-w-prose text-lg leading-relaxed">
+      I'm Bruce, a student developer based in Winnipeg. I build websites for
+      small businesses using modern tools that make sites fast, secure, and
+      cheap to run.
+    </p>
+    <p class="mt-4 max-w-prose leading-relaxed">
+      Being a student means two things for you: my rates are lower than an
+      agency's, and I care a lot about doing good work — every project goes
+      in my portfolio. I'll always be straight with you about what I can do
+      and how long it will take.
+    </p>
+    <p class="mt-8">
+      <a href="/contact/" class="text-link">Let's talk about your project</a>
+    </p>
+  </div>
 </BaseLayout>

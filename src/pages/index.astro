@@ -6,23 +6,77 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Bruce — Web Development for Small Businesses"
   description="Fast, affordable websites for small businesses, built by a student developer in Winnipeg. See my work and get in touch for a quote."
 >
-  <section>
-    <h1>Websites that win your small business more customers</h1>
-    <p>
+  <section class="mx-auto w-full max-w-5xl px-5 pt-20 pb-16 sm:px-8 md:pt-28 md:pb-24">
+    <div aria-hidden="true" class="mb-8 h-1 w-12 bg-pine-600"></div>
+    <h1 class="max-w-[22ch] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+      Websites that win your small business more customers
+    </h1>
+    <p class="mt-6 max-w-prose text-lg leading-relaxed">
       I'm Bruce, a student web developer in Winnipeg. I build fast, modern
       websites for small businesses — clear pricing, honest advice, and a
       site you can actually update yourself.
     </p>
-    <a href="/contact/">Get in touch</a>
+    <a href="/contact/" class="btn-primary mt-10">Get in touch</a>
   </section>
 
-  <section>
-    <h2>What you get</h2>
-    <ul>
-      <li>A fast site that looks good on every phone and laptop</li>
-      <li>Search-engine friendly from day one</li>
-      <li>Straightforward communication — no jargon, no surprises</li>
-    </ul>
-    <a href="/work/">See my work</a>
+  <section class="border-y border-edge bg-band">
+    <div
+      class="mx-auto grid w-full max-w-5xl gap-x-16 gap-y-8 px-5 py-16 sm:px-8 md:grid-cols-[1fr_1.6fr] md:py-20"
+    >
+      <h2 class="text-2xl font-semibold tracking-tight">What you get</h2>
+      <div>
+        <ul class="space-y-4">
+          <li class="flex gap-3">
+            <svg
+              class="mt-1.5 size-4 shrink-0 text-pine-600"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2.5 8.5l3.5 3.5 7.5-8"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            <span>A fast site that looks good on every phone and laptop</span>
+          </li>
+          <li class="flex gap-3">
+            <svg
+              class="mt-1.5 size-4 shrink-0 text-pine-600"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2.5 8.5l3.5 3.5 7.5-8"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            <span>Search-engine friendly from day one</span>
+          </li>
+          <li class="flex gap-3">
+            <svg
+              class="mt-1.5 size-4 shrink-0 text-pine-600"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2.5 8.5l3.5 3.5 7.5-8"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            <span>Straightforward communication — no jargon, no surprises</span>
+          </li>
+        </ul>
+        <a href="/work/" class="text-link mt-8 inline-block">See my work</a>
+      </div>
+    </div>
   </section>
 </BaseLayout>

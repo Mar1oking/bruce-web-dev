@@ -1,1 +1,114 @@
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/public-sans";
 @import "tailwindcss";
+
+/*
+ * Site theme — edit these tokens to retheme the whole site.
+ * Every color pairing used on the site passes WCAG AA (≥ 4.5:1).
+ */
+@theme {
+  --font-sans: "Public Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Public Sans Variable",
+    ui-sans-serif, system-ui, sans-serif;
+
+  /* Warm neutrals */
+  --color-paper: #fcfbf9; /* page background */
+  --color-band: #f4f2ee; /* alternate section background */
+  --color-edge: #e5e2dc; /* borders and rules */
+  --color-ink: #1f1b18; /* headings, dark footer background */
+  --color-body: #423c36; /* body text */
+  --color-muted: #6e665e; /* secondary text */
+  --color-fog: #d9d4cd; /* body text on ink backgrounds */
+
+  /* Accent — deep pine green, used sparingly */
+  --color-pine-50: #edf5f2;
+  --color-pine-300: #8fd6c4;
+  --color-pine-600: #17685a;
+  --color-pine-700: #115548;
+  --color-pine-800: #0d4237;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-paper font-sans text-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    @apply bg-pine-300/40;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-pine-600);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Visually hidden until focused via keyboard, then shown as a pill in the top-left */
+  .skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .skip-link:focus-visible {
+    @apply top-4 left-4 z-50 rounded-md bg-pine-600 px-4 py-2 font-medium text-white;
+    width: auto;
+    height: auto;
+    clip-path: none;
+  }
+
+  .btn-primary {
+    @apply inline-block rounded-md bg-pine-600 px-5 py-2.5 font-medium text-white transition-colors hover:bg-pine-700;
+  }
+
+  .text-link {
+    @apply font-medium text-pine-700 underline decoration-pine-300 decoration-2 underline-offset-4 transition-colors hover:decoration-pine-600;
+  }
+
+  /* Small uppercase labels: tags, metadata headings */
+  .meta-label {
+    @apply text-xs font-medium tracking-widest text-muted uppercase;
+  }
+
+  /* Rendered markdown body of a case study */
+  .md-content {
+    @apply max-w-prose leading-relaxed;
+  }
+  .md-content h2 {
+    @apply mt-10 mb-4 text-2xl font-semibold tracking-tight;
+  }
+  .md-content h3 {
+    @apply mt-8 mb-3 text-xl font-semibold tracking-tight;
+  }
+  .md-content p {
+    @apply mb-4;
+  }
+  .md-content a {
+    @apply font-medium text-pine-700 underline decoration-pine-300 decoration-2 underline-offset-4 transition-colors hover:decoration-pine-600;
+  }
+  .md-content ul,
+  .md-content ol {
+    @apply mb-4 list-disc space-y-1 pl-5;
+  }
+  .md-content ol {
+    @apply list-decimal;
+  }
+  .md-content code {
+    @apply rounded bg-band px-1 py-0.5 text-sm;
+  }
+}

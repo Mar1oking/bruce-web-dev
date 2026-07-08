@@ -9,6 +9,19 @@ interface Props {
 }
 
 const { title, description, ogImage } = Astro.props;
+
+const navLinks = [
+  { href: '/work/', label: 'Work' },
+  { href: '/services/', label: 'Services' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+
+// Trailing slashes vary between dev and build output
+const normalize = (path: string) => path.replace(/\/+$/, '') || '/';
+const currentPath = normalize(Astro.url.pathname);
+const isActive = (href: string) =>
+  currentPath === normalize(href) || currentPath.startsWith(`${normalize(href)}/`);
 ---
 
 <!doctype html>
@@ -25,23 +38,45 @@ const { title, description, ogImage } = Astro.props;
     <meta property="og:type" content="website" />
     {ogImage && <meta property="og:image" content={ogImage} />}
   </head>
-  <body>
-    <header>
-      <nav aria-label="Main">
-        <a href="/">Bruce — Web Development</a>
-        <ul>
-          <li><a href="/work/">Work</a></li>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
+  <body class="flex min-h-screen flex-col">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header class="border-b border-edge">
+      <nav
+        aria-label="Main"
+        class="mx-auto flex w-full max-w-5xl flex-wrap items-baseline justify-between gap-x-8 gap-y-1 px-5 py-5 sm:px-8"
+      >
+        <a href="/" class="font-display text-lg font-semibold tracking-tight text-ink">
+          Bruce — Web Development
+        </a>
+        <ul class="flex flex-wrap items-baseline gap-x-6 gap-y-1 text-sm font-medium">
+          {
+            navLinks.map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  aria-current={isActive(href) ? 'page' : undefined}
+                  class:list={[
+                    'transition-colors hover:text-ink',
+                    isActive(href)
+                      ? 'text-ink underline decoration-pine-600 decoration-2 underline-offset-8'
+                      : 'text-muted',
+                  ]}
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
     </header>
-    <main>
+    <main id="main" class="flex-1">
       <slot />
     </main>
-    <footer>
-      <p>© {new Date().getFullYear()} Bruce — Web Development Services · Winnipeg, Canada</p>
+    <footer class="bg-ink">
+      <p class="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-fog sm:px-8">
+        © {new Date().getFullYear()} Bruce — Web Development Services · Winnipeg, Canada
+      </p>
     </footer>
   </body>
 </html>

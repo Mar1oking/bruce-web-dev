@@ -6,38 +6,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Services & Pricing — Bruce Web Development"
   description="Website design and development services for small businesses: new sites, redesigns, and ongoing updates. Clear starting prices."
 >
-  <h1>Services</h1>
-  <p>
-    Every project starts with a conversation about what your business
-    actually needs — I'll never sell you more website than that.
-  </p>
-
-  <section>
-    <h2>New business website</h2>
-    <p>
-      A fast, mobile-friendly site that tells customers what you do, where
-      you are, and how to reach you. Includes basic search-engine setup.
+  <div class="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 md:py-20">
+    <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Services</h1>
+    <p class="mt-4 max-w-prose text-lg leading-relaxed">
+      Every project starts with a conversation about what your business
+      actually needs — I'll never sell you more website than that.
     </p>
-    <p>Starting at $__</p>
-  </section>
 
-  <section>
-    <h2>Website redesign</h2>
-    <p>
-      Already have a site that looks dated or loads slowly? I'll rebuild it
-      on a modern foundation while keeping what works.
-    </p>
-    <p>Starting at $__</p>
-  </section>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <section class="flex flex-col rounded-lg border border-edge bg-white p-6">
+        <h2 class="text-xl font-semibold tracking-tight">New business website</h2>
+        <p class="mt-3 leading-relaxed">
+          A fast, mobile-friendly site that tells customers what you do, where
+          you are, and how to reach you. Includes basic search-engine setup.
+        </p>
+        <p class="mt-auto border-t border-edge pt-4 font-display font-semibold text-ink">
+          Starting at $__
+        </p>
+      </section>
 
-  <section>
-    <h2>Updates & maintenance</h2>
-    <p>
-      Content changes, new pages, and keeping things running — so your site
-      stays current without you touching code.
-    </p>
-    <p>Quote on request</p>
-  </section>
+      <section class="flex flex-col rounded-lg border border-edge bg-white p-6">
+        <h2 class="text-xl font-semibold tracking-tight">Website redesign</h2>
+        <p class="mt-3 leading-relaxed">
+          Already have a site that looks dated or loads slowly? I'll rebuild it
+          on a modern foundation while keeping what works.
+        </p>
+        <p class="mt-auto border-t border-edge pt-4 font-display font-semibold text-ink">
+          Starting at $__
+        </p>
+      </section>
 
-  <p><a href="/contact/">Get a quote</a></p>
+      <section class="flex flex-col rounded-lg border border-edge bg-white p-6">
+        <h2 class="text-xl font-semibold tracking-tight">Updates & maintenance</h2>
+        <p class="mt-3 leading-relaxed">
+          Content changes, new pages, and keeping things running — so your site
+          stays current without you touching code.
+        </p>
+        <p class="mt-auto border-t border-edge pt-4 font-display font-semibold text-ink">
+          Quote on request
+        </p>
+      </section>
+    </div>
+
+    <p class="mt-12"><a href="/contact/" class="btn-primary">Get a quote</a></p>
+  </div>
 </BaseLayout>
