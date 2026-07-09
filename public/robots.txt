@@ -1,0 +1,5 @@
+# TODO: placeholder domain — update alongside `site` in astro.config.mjs when the real URL is decided
+User-agent: *
+Allow: /
+
+Sitemap: https://bruce-web.netlify.app/sitemap-index.xml

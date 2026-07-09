@@ -36,6 +36,8 @@ const formatDate = (date: Date) =>
                 src={lead.data.cover}
                 alt={`${lead.data.title} — cover image`}
                 width={1200}
+                loading="eager"
+                fetchpriority="high"
                 class="aspect-[16/10] w-full rounded-lg border border-edge object-cover transition-colors group-hover:border-pine-300"
               />
             </a>

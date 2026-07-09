@@ -1,14 +1,29 @@
 ---
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description: string;
-  /** Absolute or root-relative URL. TODO: add a default OG image once one is designed. */
-  ogImage?: string;
+  /** Page-specific social image; falls back to the default site card. */
+  ogImage?: ImageMetadata;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, ogImageAlt, ogType = 'website' } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Social preview image. Page images are re-encoded as JPEG — some scrapers
+// (LinkedIn among them) still choke on WebP og:image.
+const pageOg = ogImage ? await getImage({ src: ogImage, width: 1200, format: 'jpeg' }) : null;
+const ogImageURL = new URL(pageOg ? pageOg.src : '/og-default.png', Astro.site);
+const ogImageWidth = 1200;
+const ogImageHeight =
+  pageOg && ogImage ? Math.round((ogImage.height / ogImage.width) * 1200) : 630;
+const ogImageAltText = ogImageAlt ?? 'Bruce — Web Development for Small Businesses';
 
 const navLinks = [
   { href: '/work/', label: 'Work' },
@@ -31,12 +46,24 @@ const isActive = (href: string) =>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta property="og:site_name" content="Bruce — Web Development" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content={String(ogImageWidth)} />
+    <meta property="og:image:height" content={String(ogImageHeight)} />
+    <meta property="og:image:alt" content={ogImageAltText} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogImageAltText} />
   </head>
   <body class="flex min-h-screen flex-col">
     <a href="#main" class="skip-link">Skip to content</a>

@@ -95,6 +95,8 @@ const steps = [
                   src={featured.data.cover}
                   alt={`${featured.data.title} — the live site in a browser`}
                   width={1600}
+                  loading="eager"
+                  fetchpriority="high"
                   class="aspect-[16/9] w-full object-cover object-top"
                 />
               </span>

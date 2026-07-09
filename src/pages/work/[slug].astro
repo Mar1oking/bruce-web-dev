@@ -24,6 +24,9 @@ const formattedDate = project.data.date.toLocaleDateString('en-CA', {
 <BaseLayout
   title={`${project.data.title} — Bruce Web Development`}
   description={project.data.summary}
+  ogImage={project.data.cover}
+  ogImageAlt={`${project.data.title} — cover image`}
+  ogType="article"
 >
   <article class="mx-auto w-full max-w-3xl px-5 pt-20 sm:px-8 md:pt-28">
     <header>
@@ -50,6 +53,8 @@ const formattedDate = project.data.date.toLocaleDateString('en-CA', {
         src={project.data.cover}
         alt={`${project.data.title} — cover image`}
         width={1200}
+        loading="eager"
+        fetchpriority="high"
         class="mt-10 w-full rounded-lg border border-edge"
       />
     </header>

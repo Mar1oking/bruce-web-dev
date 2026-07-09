@@ -28,6 +28,7 @@
   /* Accents — mint carries interaction, sand carries editorial marks */
   --color-pine-50: #182b26; /* lifted green tint surface */
   --color-pine-300: #4e7a6e; /* dim mint — underline decoration, resting borders */
+  --color-pine-400: #5c8b7c; /* form input borders — ≥ 3:1 against `band` (WCAG non-text) */
   --color-pine-600: #7fd1bc; /* primary accent — links, numerals, CTA surface */
   --color-pine-700: #9adecb; /* hover state (brighter = "up" on dark) */
   --color-pine-800: #0d4237; /* deep pine — dark text on mint surfaces */
@@ -58,6 +59,11 @@
   :focus-visible {
     outline: 2px solid var(--color-pine-600);
     outline-offset: 2px;
+  }
+
+  /* On mint surfaces the mint ring would vanish — switch to the darkest pine */
+  .bg-pine-600 :focus-visible {
+    outline-color: var(--color-pine-950);
   }
 }
 

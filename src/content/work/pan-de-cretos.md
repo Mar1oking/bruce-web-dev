@@ -27,10 +27,10 @@ result: >-
 tags:
   - Astro
   - Tailwind
-cover: ../../assets/work/pan-de-cretos/cover.png
+cover: ../../assets/work/pan-de-cretos/cover.webp
 images:
-  - ../../assets/work/pan-de-cretos/menu.png
-  - ../../assets/work/pan-de-cretos/locations.png
+  - ../../assets/work/pan-de-cretos/menu.webp
+  - ../../assets/work/pan-de-cretos/locations.webp
 date: 2026-07-08
 featured: true
 ---
