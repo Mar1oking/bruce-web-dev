@@ -191,8 +191,8 @@
 
     @keyframes sda-rise {
       from {
-        opacity: 0.4;
-        transform: translateY(28px) scale(0.97);
+        opacity: 0;
+        transform: translateY(48px) scale(0.96);
       }
     }
     @keyframes sda-fade-up {
